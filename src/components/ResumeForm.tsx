@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState, ChangeEvent } from 'react';
+import { Input } from './ui/input';
+import { Textarea } from './ui/textarea';
 
 type FormData = {
   firstName: string;
@@ -65,11 +67,15 @@ const ResumeForm: React.FC<Props> = ({ formData, onSubmit }) => {
       {step === 2 && (
         <div>
           <h2 className="text-xl font-bold mb-4 text-white">Professional Experience</h2>
-          <input type="text" name="positionTitle" value={formData.positionTitle} onChange={handleChange} placeholder="Position Title" className="p-2 border rounded mb-2 w-full" />
-          <input type="text" name="companyName" value={formData.companyName} onChange={handleChange} placeholder="Company Name" className="p-2 border rounded mb-2 w-full" />
-          <input type="text" name="startDate" value={formData.startDate} onChange={handleChange} placeholder="Start Date" className="p-2 border rounded mb-2 w-full" />
-          <input type="text" name="endDate" value={formData.endDate} onChange={handleChange} placeholder="End Date" className="p-2 border rounded mb-2 w-full" />
-          <textarea name="workSummary" value={formData.workSummary} onChange={handleChange} placeholder="Work Summary" className="p-2 border rounded mb-2 w-full" />
+          <Input className='m-2' type="text" name="positionTitle" value={formData.positionTitle} onChange={handleChange} placeholder="Position Title"/>
+         <Input className='m-2'  type="text" name="companyName" value={formData.companyName} onChange={handleChange} placeholder="Company Name"/>
+         <Input className='m-2' type="text" name="startDate" value={formData.startDate} 
+          onChange={handleChange} placeholder="Start Date"/>
+         <Input className='m-2' type="text" name="endDate" value={formData.endDate}
+           onChange={handleChange} placeholder="End Date"/>
+           <Textarea className='m-2' name="workSummary" value={formData.workSummary}
+           onChange={handleChange} placeholder="Work Summary"/>
+        
         </div>
       )}
 
