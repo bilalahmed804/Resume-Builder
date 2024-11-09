@@ -1,28 +1,7 @@
-"use client"
-import { getFirestore } from "firebase/firestore";
-import { collection, getDocs } from "firebase/firestore";
-import { app } from "@/lib/firebase";
-import React, { useEffect } from 'react'
 
 const DisplayContent = () => {
 
-  // Initialize Cloud Firestore and get a reference to the service
-const db = getFirestore(app);
-  
-useEffect(() => {
-  const fetchData = async () => {
-    try {
-      const querySnapshot = await getDocs(collection(db, "user"));
-      querySnapshot.forEach((doc) => {
-        console.log(doc.id, " => ", doc.data());
-      });
-    } catch (error) {
-      console.error("Error fetching documents: ", error);
-    }
-  };
 
-  fetchData();
-});
   return (
       
           <div className="max-w-4xl m-5 p-8 bg-blue-950 shadow-lg rounded-lg space-y-6">

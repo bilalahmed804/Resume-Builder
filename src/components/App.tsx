@@ -1,9 +1,6 @@
 "use client"
-import {app} from "@/lib/firebase"
-import { getFirestore } from "firebase/firestore";
-import { collection, addDoc } from "firebase/firestore"; 
-import React, { useEffect, useState } from 'react';
-import ResumeForm from './ResumeForm'; // Adjust path as needed
+import React, {  useState } from 'react';
+import ResumeForm from './ResumeForm'; 
 
 type FormData = {
   firstName: string;
@@ -25,8 +22,7 @@ type FormData = {
   description: string;
   skills: string;
 };
-// Initialize Cloud Firestore and get a reference to the service
-const db = getFirestore(app);
+
 const App = () => {
     
   const [formData, setFormData] = useState<FormData>({
@@ -49,41 +45,26 @@ const App = () => {
     description: '',
     skills: '',
   });
-const userData = {
-    firstName: formData.firstName,
-    lastName: formData.lastName,
-    email: formData.email,
-    jobTitle: formData.jobTitle,
-    positionTitle: formData.positionTitle,
-    companyName: formData.companyName,
-    data: `Start Date ${formData.startDate} - End Date ${formData.endDate}`,
-    summary: formData.workSummary,
-    universityName: formData.universityName,
-    degree: formData.degree,
-    major: formData.major,
-    description: formData.description,
-    skills: formData.skills,
-}
-  useEffect(() => {
-      const addDocument = async () => {
-        try {
-          const docRef = await addDoc(collection(db, "user"), {
-         userDatainfor:userData
-          });
-    
-          console.log("Document written with ID: ", docRef.id);
-        } catch (error) {
-            console.error("Error adding document: ", error);
-        }
-    };
-    
-    addDocument();
-}, [formData]);
+// const userData = {
+//     firstName: formData.firstName,
+//     lastName: formData.lastName,
+//     email: formData.email,
+//     jobTitle: formData.jobTitle,
+//     positionTitle: formData.positionTitle,
+//     companyName: formData.companyName,
+//     data: `Start Date ${formData.startDate} - End Date ${formData.endDate}`,
+//     summary: formData.workSummary,
+//     universityName: formData.universityName,
+//     degree: formData.degree,
+//     major: formData.major,
+//     description: formData.description,
+//     skills: formData.skills,
+// }
+ 
 const handleFormSubmit = async (data: FormData) => {
     console.log('Form submitted:', data);
     setFormData(data);
     
-    // You can add more logic here to process form data
 };
 
   return (
